@@ -2,6 +2,7 @@
 #Wilco Ng 18/06/20
 #To do a list
 task_list = []
+back = "menu"
 def selection():
     print("1. Add a task")
     print("2. View list")
@@ -10,8 +11,14 @@ def selection():
 
     if choice == 1:
         print("type 'menu' to go back")
-        task_list.append(input("What task would you like to add? "))
-        selection()
+        add = input("What task would you like to add? ")
+        add = add.lower()
+        task_list.append(add)
+        if back in task_list:
+            task_list.remove("menu")
+            selection()
+        else:
+            selection()
     elif choice == 2:
         i = 0
         while i < len(task_list):
